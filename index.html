@@ -63,8 +63,26 @@
         background-color: #FFFFFF;
         border-radius: 122px;
         padding: 0 8px;
-        margin-top: 53vh;
         margin-bottom: 6vh;
+        margin-top: 53vh;
+      }
+
+      @media (max-width: 600px) {
+        .search {
+          margin-top: 30vh;
+        }
+      }
+
+      @media (min-width: 600px) and (max-width: 800px) {
+        .search {
+          margin-top: 30vh;
+        }
+      }
+
+      @media (min-width: 800px) {
+        .search {
+          margin-top: 60vh;
+        }
       }
 
       .search input {
@@ -94,8 +112,7 @@
 
       .image {
         position: relative;
-        width: 100%;
-        max-width: 79.8rem;
+        width: 40%;
         margin: 0 auto;
         margin-top: 12vh;
         display: flex;
@@ -248,7 +265,7 @@
 
       <div class="image">
         <img src="./public/images/luzes.svg" class="lights" alt="Luzes">
-        <img src="./public/images/img-pokeball.png" alt="Pokeball">
+        <img src="./public/images/img-pokeball.png">
       </div>
     </section>
 
