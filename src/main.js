@@ -1,38 +1,19 @@
-import { getPokemons } from './http/pokemon.js';
+import renderHtmlListPokemon from './components/renderHtmlListPokemon.js';
+import Pokemon from './http/pokemon.js';
 
-const pokemons = await getPokemons();
+const classPokemon = new Pokemon();
+const pokemons = await classPokemon.getPokemons();
 const search = document.getElementById("input-search");
-const listPokemon = document.getElementById("list-pokemon")
+const listPokemon = document.getElementById("list-pokemon");
+const classRenderHtmlListPokemon = new renderHtmlListPokemon(listPokemon);
 
-const renderHtmlListPokemon = async (pokemons) => {
-  listPokemon.inner = '';
-  let html = '';
-
-  await pokemons.map(pokemon => {
-    let url = pokemon.url.split('/');
-
-    html += `<button class="card-pokemon grass js-open-pokemon">
-              <div class="image">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${url[6]}.svg">
-              </div>
-              <div class="info">
-                <div>
-                  <span>#${url[6]}</span>
-                  <strong>${pokemon.name}</strong>
-                </div>
-              </div>
-            </button>`;
-  });
-
-  listPokemon.innerHTML = html;
-}
+classRenderHtmlListPokemon.render(pokemons);
 
 search.addEventListener("input", (e) => {
   if (e.target.value.trim()) {
-    renderHtmlListPokemon(pokemons.filter(pokemon => pokemon.name.toLowerCase().indexOf(e.target.value.trim().toLowerCase()) !== -1));
+    let filtered = pokemons.filter(pokemon => pokemon.name.toLowerCase().indexOf(e.target.value.trim().toLowerCase()) !== -1);
+    classRenderHtmlListPokemon.render(filtered);
   } else {
-    renderHtmlListPokemon(pokemons);
+    classRenderHtmlListPokemon.render(pokemons);
   }
 })
-
-renderHtmlListPokemon(pokemons);
