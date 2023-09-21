@@ -105,7 +105,7 @@ header .container-header {
 .s-all-info-pokemons {
   position: relative;
   z-index: 2;
-  padding-top: 11.9rem;
+  padding-top: 20vh;
 }
 .container {
   width: 100%;
@@ -118,15 +118,15 @@ header .container-header {
 
 .s-all-info-pokemons .area-all .right-container {
   flex: 1;
-  padding-top: 7.2rem;
-  padding-left: 7.5rem;
-  padding-right: 7.5rem;
+  padding: 5rem;
 }
 
 .right-container .all {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3.2rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .card-pokemon {
@@ -220,11 +220,19 @@ header .container-header {
   .search {
     margin-top: 30vh;
   }
+
+  .s-all-info-pokemons {
+    padding-top: 0;
+  }
 }
 
 @media (min-width: 600px) and (max-width: 800px) {
   .search {
     margin-top: 30vh;
+  }
+
+  .s-all-info-pokemons {
+    padding-top: 0;
   }
 }
 
